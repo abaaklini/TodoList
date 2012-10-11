@@ -1,0 +1,21 @@
+<p>
+  <b>Title:</b>
+  <%=h @todo_list.title %>
+</p>
+
+<h2>List Items</h2>
+<% @todo_list.list_items.each do |l| %>
+    <p>
+    <b>Title:</b>
+    <%=h l.title %>
+    </p>
+
+    <p>
+    <b>Description:</b>
+    <%=h l.description %>
+    </p>
+<% end %>
+
+<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+<%= link_to 'Back', todo_lists_path %>
+<%= link_to 'Manage List Items', todo_list_list_items_path(@todo_list) %>

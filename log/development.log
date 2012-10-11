@@ -1,0 +1,865 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (119.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (83.7ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTodoLists (20121003124827)
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "todo_lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20121003124827')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("todo_lists")[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2012-10-03 09:52:42) [GET]
+Rendering home/index
+Completed in 5ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 09:53:07) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 10ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTodoLists (20121003124827)
+Migrating to CreateListItems (20121003130755)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "list_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "todo_list_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20121003130755')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("list_items")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("todo_lists")[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2012-10-03 11:01:18) [GET]
+Rendering home/index
+Completed in 1ms (View: 0, DB: 0) | 200 OK [http://127.0.0.1/]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:01:22) [GET]
+  [4;35;1mTodoList Load (0.3ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 11ms (View: 1, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#new (for 127.0.0.1 at 2012-10-03 11:01:27) [GET]
+Rendering template within layouts/todo_lists
+Rendering todo_lists/new
+Completed in 14ms (View: 11, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/new]
+
+
+Processing TodoListsController#create (for 127.0.0.1 at 2012-10-03 11:01:31) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "todo_list"=>{"title"=>"Teste"}, "commit"=>"Create"}
+  [4;36;1mTodoList Create (0.2ms)[0m   [0;1mINSERT INTO "todo_lists" ("title", "updated_at", "created_at") VALUES('Teste', '2012-10-03 14:01:31', '2012-10-03 14:01:31')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/1
+Completed in 172ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:01:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+Completed in 40ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing TodoListsController#edit (for 127.0.0.1 at 2012-10-03 11:01:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/edit
+Completed in 10ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/edit]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:01:41) [GET]
+  [4;35;1mTodoList Load (0.3ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:01:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:01:49) [GET]
+  [4;35;1mTodoList Load (0.4ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#edit (for 127.0.0.1 at 2012-10-03 11:01:54) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/edit
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/edit]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:01:57) [GET]
+  [4;35;1mTodoList Load (0.3ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:08:22) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:08:25) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 10ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:09:28) [GET]
+  [4;35;1mTodoList Load (0.3ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 9ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:09:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:09:36) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#edit (for 127.0.0.1 at 2012-10-03 11:09:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/edit
+Completed in 19ms (View: 16, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/edit]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:09:39) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:09:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 41ms (View: 37, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 11:09:43) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 20ms (View: 10, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing ListItemsController#new (for 127.0.0.1 at 2012-10-03 11:09:52) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/new
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/new]
+
+
+Processing ListItemsController#new (for 127.0.0.1 at 2012-10-03 11:12:54) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/new
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/new]
+
+
+Processing ListItemsController#create (for 127.0.0.1 at 2012-10-03 11:13:15) [POST]
+  Parameters: {"todo_list_id"=>"1", "authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "list_item"=>{"title"=>"Tarefa 1", "description"=>"Tarefa de Teste"}, "commit"=>"Create"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;36;1mListItem Create (0.1ms)[0m   [0;1mINSERT INTO "list_items" ("todo_list_id", "title", "description", "updated_at", "created_at") VALUES(1, 'Tarefa 1', 'Tarefa de Teste', '2012-10-03 14:13:15', '2012-10-03 14:13:15')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/1/list_items/1
+Completed in 182ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 11:13:15) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items"."id" = 1 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/1]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 11:17:07) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;36;1mListItem Load (0.2ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items"."id" = 1 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/show
+Completed in 43ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/1]
+
+
+Processing ListItemsController#edit (for 127.0.0.1 at 2012-10-03 11:17:12) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items"."id" = 1 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/edit
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/1/edit]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 11:17:14) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing ListItemsController#new (for 127.0.0.1 at 2012-10-03 11:17:20) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/new]
+
+
+Processing ListItemsController#create (for 127.0.0.1 at 2012-10-03 11:17:33) [POST]
+  Parameters: {"todo_list_id"=>"1", "authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "list_item"=>{"title"=>"Tarefa 2", "description"=>"Nova tarefa de teste"}, "commit"=>"Create"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mListItem Create (0.1ms)[0m   [0mINSERT INTO "list_items" ("todo_list_id", "title", "description", "updated_at", "created_at") VALUES(1, 'Tarefa 2', 'Nova tarefa de teste', '2012-10-03 14:17:33', '2012-10-03 14:17:33')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/1/list_items/2
+Completed in 193ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 11:17:33) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 2 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/show
+Completed in 10ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/2]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 11:31:10) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 2 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/2]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 11:31:18) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 2 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/2]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 11:32:01) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 2 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/2]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 11:32:03) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;36;1mTodoList Load (0.2ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/index
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing ListItemsController#edit (for 127.0.0.1 at 2012-10-03 11:32:10) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 2 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/edit
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/2/edit]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 11:32:12) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/index
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 11:32:18) [GET]
+  Parameters: {"todo_list_id"=>"1", "id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 2 AND ("list_items".todo_list_id = 1)) [0m
+Rendering list_items/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items/2]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 11:32:27) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/index
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 75ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:32:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 11:32:38) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:32:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTodoList Load (0.2ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.2ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 11:32:58) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.2ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 14ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1/list_items]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 11:33:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 1) [0m
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/1]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 12:43:24) [GET]
+  [4;35;1mTodoList Load (0.4ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#destroy (for 127.0.0.1 at 2012-10-03 12:43:35) [DELETE]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;35;1mTodoList Destroy (0.1ms)[0m   [0mDELETE FROM "todo_lists" WHERE "id" = 1[0m
+Redirected to http://127.0.0.1:3000/todo_lists
+Completed in 133ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists/1]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 12:43:35) [GET]
+  [4;36;1mTodoList Load (0.2ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#new (for 127.0.0.1 at 2012-10-03 12:43:42) [GET]
+Rendering template within layouts/todo_lists
+Rendering todo_lists/new
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/new]
+
+
+Processing TodoListsController#create (for 127.0.0.1 at 2012-10-03 12:43:47) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "todo_list"=>{"title"=>"Teste"}, "commit"=>"Create"}
+  [4;35;1mTodoList Create (0.1ms)[0m   [0mINSERT INTO "todo_lists" ("title", "updated_at", "created_at") VALUES('Teste', '2012-10-03 15:43:48', '2012-10-03 15:43:48')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/2
+Completed in 162ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 12:43:48) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/2]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 12:43:51) [GET]
+  Parameters: {"todo_list_id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+Rendering list_items/index
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/2/list_items]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 12:43:57) [GET]
+  Parameters: {"todo_list_id"=>"1"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find TodoList with ID=1):
+  app/controllers/list_items_controller.rb:3:in `index'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/alex/.rvm/rubies/ruby-1.8.7-p370/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (10.3ms)
+Rendering rescues/layout (not_found)
+  [4;36;1mListItem Load (0.4ms)[0m   [0;1mSELECT * FROM "list_items" [0m
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" [0m
+  [4;36;1mListItem Load (0.2ms)[0m   [0;1mSELECT * FROM "list_items" [0m
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 1) [0m
+  [4;36;1mTodoList Load (0.2ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+  [4;35;1mListItem Load (0.3ms)[0m   [0mSELECT * FROM "list_items" [0m
+  [4;36;1mTodoList Load (0.2ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+  [4;35;1mListItem Load (0.3ms)[0m   [0mSELECT * FROM "list_items" [0m
+  [4;36;1mListItem Load (0.3ms)[0m   [0;1mSELECT * FROM "list_items" [0m
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 12:50:09) [GET]
+  Parameters: {"todo_list_id"=>"2"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/2/list_items]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 12:50:13) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/2]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 12:50:17) [GET]
+  Parameters: {"todo_list_id"=>"2"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/2/list_items]
+  [4;35;1mListItem Load (0.3ms)[0m   [0mSELECT * FROM "list_items" [0m
+  [4;36;1mListItem Update (0.3ms)[0m   [0;1mUPDATE "list_items" SET "todo_list_id" = 2, "updated_at" = '2012-10-03 15:51:10' WHERE "id" = 2[0m
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" [0m
+  [4;36;1mListItem Update (0.2ms)[0m   [0;1mUPDATE "list_items" SET "todo_list_id" = 2, "updated_at" = '2012-10-03 15:51:40' WHERE "id" = 1[0m
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 12:51:43) [GET]
+  Parameters: {"todo_list_id"=>"2"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/2/list_items]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 12:51:47) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/2]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 12:51:54) [GET]
+  [4;35;1mTodoList Load (0.3ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 38ms (View: 34, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#destroy (for 127.0.0.1 at 2012-10-03 12:51:57) [DELETE]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "id"=>"2"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 2) [0m
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 2) [0m
+  [4;36;1mListItem Destroy (0.1ms)[0m   [0;1mDELETE FROM "list_items" WHERE "id" = 1[0m
+  [4;35;1mListItem Destroy (0.0ms)[0m   [0mDELETE FROM "list_items" WHERE "id" = 2[0m
+  [4;36;1mTodoList Destroy (0.0ms)[0m   [0;1mDELETE FROM "todo_lists" WHERE "id" = 2[0m
+Redirected to http://127.0.0.1:3000/todo_lists
+Completed in 145ms (DB: 1) | 302 Found [http://127.0.0.1/todo_lists/2]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 12:51:57) [GET]
+  [4;35;1mTodoList Load (0.2ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 4ms (View: 1, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" [0m
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 16:34:01) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 14ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#new (for 127.0.0.1 at 2012-10-03 16:34:03) [GET]
+Rendering template within layouts/todo_lists
+Rendering todo_lists/new
+Completed in 11ms (View: 8, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/new]
+
+
+Processing TodoListsController#create (for 127.0.0.1 at 2012-10-03 16:34:09) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "commit"=>"Create", "todo_list"=>{"title"=>"Lista1"}}
+  [4;35;1mTodoList Create (0.2ms)[0m   [0mINSERT INTO "todo_lists" ("updated_at", "title", "created_at") VALUES('2012-10-03 19:34:09', 'Lista1', '2012-10-03 19:34:09')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/3
+Completed in 149ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 16:34:10) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 3) [0m
+Completed in 10ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 16:34:14) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 6ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#new (for 127.0.0.1 at 2012-10-03 16:34:15) [GET]
+Rendering template within layouts/todo_lists
+Rendering todo_lists/new
+Completed in 11ms (View: 8, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/new]
+
+
+Processing TodoListsController#create (for 127.0.0.1 at 2012-10-03 16:34:22) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "commit"=>"Create", "todo_list"=>{"title"=>"Lista2"}}
+  [4;35;1mTodoList Create (0.2ms)[0m   [0mINSERT INTO "todo_lists" ("updated_at", "title", "created_at") VALUES('2012-10-03 19:34:22', 'Lista2', '2012-10-03 19:34:22')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/4
+Completed in 136ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 16:34:22) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 4) [0m
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 16:34:24) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 9ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#new (for 127.0.0.1 at 2012-10-03 16:34:25) [GET]
+Rendering template within layouts/todo_lists
+Rendering todo_lists/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/new]
+
+
+Processing TodoListsController#create (for 127.0.0.1 at 2012-10-03 16:34:33) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "commit"=>"Create", "todo_list"=>{"title"=>"Lis"}}
+Rendering template within layouts/todo_lists
+Rendering todo_lists/new
+Completed in 9ms (View: 5, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#create (for 127.0.0.1 at 2012-10-03 16:34:44) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "commit"=>"Create", "todo_list"=>{"title"=>"Lista3"}}
+  [4;35;1mTodoList Create (0.1ms)[0m   [0mINSERT INTO "todo_lists" ("updated_at", "title", "created_at") VALUES('2012-10-03 19:34:44', 'Lista3', '2012-10-03 19:34:44')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/5
+Completed in 207ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 16:34:44) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 5) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 5) [0m
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/5]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 16:34:49) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 43ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 16:34:52) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 3) [0m
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 16:34:54) [GET]
+  Parameters: {"todo_list_id"=>"3"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.2ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 3) [0m
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3/list_items]
+
+
+Processing ListItemsController#new (for 127.0.0.1 at 2012-10-03 16:34:56) [GET]
+  Parameters: {"todo_list_id"=>"3"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering list_items/new
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3/list_items/new]
+
+
+Processing ListItemsController#create (for 127.0.0.1 at 2012-10-03 16:35:18) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "todo_list_id"=>"3", "commit"=>"Create", "list_item"=>{"description"=>"Item1.1 a ser feito", "title"=>"Item1.1"}}
+  [4;36;1mTodoList Load (1.5ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+  [4;35;1mListItem Create (0.1ms)[0m   [0mINSERT INTO "list_items" ("updated_at", "todo_list_id", "title", "description", "created_at") VALUES('2012-10-03 19:35:18', 3, 'Item1.1', 'Item1.1 a ser feito', '2012-10-03 19:35:18')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/3/list_items/3
+Completed in 174ms (DB: 2) | 302 Found [http://127.0.0.1/todo_lists/3/list_items]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 16:35:19) [GET]
+  Parameters: {"todo_list_id"=>"3", "id"=>"3"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 3 AND ("list_items".todo_list_id = 3)) [0m
+Rendering list_items/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3/list_items/3]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 16:35:21) [GET]
+  Parameters: {"todo_list_id"=>"3"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering list_items/index
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 3) [0m
+Completed in 43ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3/list_items]
+
+
+Processing ListItemsController#new (for 127.0.0.1 at 2012-10-03 16:35:23) [GET]
+  Parameters: {"todo_list_id"=>"3"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering list_items/new
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3/list_items/new]
+
+
+Processing ListItemsController#create (for 127.0.0.1 at 2012-10-03 16:35:38) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "todo_list_id"=>"3", "commit"=>"Create", "list_item"=>{"description"=>"Item1.2 a ser feito", "title"=>"Item1.2"}}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+  [4;36;1mListItem Create (0.2ms)[0m   [0;1mINSERT INTO "list_items" ("updated_at", "todo_list_id", "title", "description", "created_at") VALUES('2012-10-03 19:35:38', 3, 'Item1.2', 'Item1.2 a ser feito', '2012-10-03 19:35:38')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/3/list_items/4
+Completed in 190ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists/3/list_items]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 16:35:38) [GET]
+  Parameters: {"todo_list_id"=>"3", "id"=>"4"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items"."id" = 4 AND ("list_items".todo_list_id = 3)) [0m
+Rendering list_items/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3/list_items/4]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 16:35:40) [GET]
+  Parameters: {"todo_list_id"=>"3"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.2ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 3) [0m
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3/list_items]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 16:35:42) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 3) [0m
+Completed in 7ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 16:35:49) [GET]
+  [4;35;1mTodoList Load (0.3ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 14ms (View: 11, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 16:36:20) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 4) [0m
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 16:36:22) [GET]
+  Parameters: {"todo_list_id"=>"4"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering list_items/index
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 4) [0m
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4/list_items]
+
+
+Processing ListItemsController#new (for 127.0.0.1 at 2012-10-03 16:36:24) [GET]
+  Parameters: {"todo_list_id"=>"4"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering list_items/new
+Completed in 11ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4/list_items/new]
+
+
+Processing ListItemsController#create (for 127.0.0.1 at 2012-10-03 16:36:38) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "todo_list_id"=>"4", "commit"=>"Create", "list_item"=>{"description"=>"Item1.2 a ser feito", "title"=>"Item2.1"}}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+  [4;36;1mListItem Create (0.1ms)[0m   [0;1mINSERT INTO "list_items" ("updated_at", "todo_list_id", "title", "description", "created_at") VALUES('2012-10-03 19:36:38', 4, 'Item2.1', 'Item1.2 a ser feito', '2012-10-03 19:36:38')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/4/list_items/5
+Completed in 165ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists/4/list_items]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 16:36:39) [GET]
+  Parameters: {"todo_list_id"=>"4", "id"=>"5"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items"."id" = 5 AND ("list_items".todo_list_id = 4)) [0m
+Rendering list_items/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4/list_items/5]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 16:36:45) [GET]
+  Parameters: {"todo_list_id"=>"4"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering list_items/index
+  [4;36;1mListItem Load (0.1ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 4) [0m
+Completed in 23ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4/list_items]
+
+
+Processing ListItemsController#new (for 127.0.0.1 at 2012-10-03 16:36:47) [GET]
+  Parameters: {"todo_list_id"=>"4"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering list_items/new
+Completed in 11ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4/list_items/new]
+
+
+Processing ListItemsController#create (for 127.0.0.1 at 2012-10-03 16:37:00) [POST]
+  Parameters: {"authenticity_token"=>"3ygdappdv4+EQFCXIdEIFqbPc2OcIkAosIdWi5etAb8=", "todo_list_id"=>"4", "commit"=>"Create", "list_item"=>{"description"=>"Item 2.2 a ser feito", "title"=>"Item 2.2"}}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+  [4;35;1mListItem Create (0.1ms)[0m   [0mINSERT INTO "list_items" ("updated_at", "todo_list_id", "title", "description", "created_at") VALUES('2012-10-03 19:37:00', 4, 'Item 2.2', 'Item 2.2 a ser feito', '2012-10-03 19:37:00')[0m
+Redirected to http://127.0.0.1:3000/todo_lists/4/list_items/6
+Completed in 228ms (DB: 0) | 302 Found [http://127.0.0.1/todo_lists/4/list_items]
+
+
+Processing ListItemsController#show (for 127.0.0.1 at 2012-10-03 16:37:00) [GET]
+  Parameters: {"todo_list_id"=>"4", "id"=>"6"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items"."id" = 6 AND ("list_items".todo_list_id = 4)) [0m
+Rendering list_items/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4/list_items/6]
+
+
+Processing ListItemsController#index (for 127.0.0.1 at 2012-10-03 16:37:02) [GET]
+  Parameters: {"todo_list_id"=>"4"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering list_items/index
+  [4;35;1mListItem Load (0.2ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 4) [0m
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4/list_items]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-03 16:37:04) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mTodoList Load (0.1ms)[0m   [0;1mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 4) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;35;1mListItem Load (0.1ms)[0m   [0mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 4) [0m
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/4]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-03 16:37:06) [GET]
+  [4;36;1mTodoList Load (0.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 10ms (View: 7, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing HomeController#index (for 127.0.0.1 at 2012-10-11 09:01:50) [GET]
+Rendering home/index
+Completed in 80ms (View: 79, DB: 0) | 200 OK [http://127.0.0.1/]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-11 09:01:52) [GET]
+  [4;36;1mTodoList Load (18.3ms)[0m   [0;1mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 91ms (View: 43, DB: 18) | 200 OK [http://127.0.0.1/todo_lists]
+
+
+Processing TodoListsController#show (for 127.0.0.1 at 2012-10-11 09:01:59) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mTodoList Load (0.1ms)[0m   [0mSELECT * FROM "todo_lists" WHERE ("todo_lists"."id" = 3) [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/show
+  [4;36;1mListItem Load (0.2ms)[0m   [0;1mSELECT * FROM "list_items" WHERE ("list_items".todo_list_id = 3) [0m
+Completed in 44ms (View: 40, DB: 0) | 200 OK [http://127.0.0.1/todo_lists/3]
+
+
+Processing TodoListsController#index (for 127.0.0.1 at 2012-10-11 09:02:11) [GET]
+  [4;35;1mTodoList Load (0.3ms)[0m   [0mSELECT * FROM "todo_lists" [0m
+Rendering template within layouts/todo_lists
+Rendering todo_lists/index
+Completed in 10ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/todo_lists]

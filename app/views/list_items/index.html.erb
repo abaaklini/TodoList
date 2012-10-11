@@ -1,0 +1,28 @@
+<h1>Items for <%= @todo_list.title %></h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+    </tr>
+
+    <% for list_item in @list_items %>
+        <tr>
+            <td><%=h list_item.title %></td>
+            <td><%=h list_item.description %></td>
+            <td><%= link_to 'Show', todo_list_list_item_path(@todo_list, list_item) %></td>
+            <td>
+                <%= link_to 'Edit', edit_todo_list_list_item_path(@todo_list, list_item) %>
+            </td>
+            <td>
+                <%= link_to 'Destroy', todo_list_list_item_path(@todo_list, list_item),
+                    :confirm => 'Are you sure?', :method => :delete %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New List Item', new_todo_list_list_item_path(@todo_list) %>
+    <%= link_to 'Back to Todo List', @todo_list %>

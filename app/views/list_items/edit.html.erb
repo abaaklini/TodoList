@@ -1,0 +1,20 @@
+<h1>Editing List Item</h1>
+
+<% form_for([@todo_list, @list_item]) do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+    </p>
+    <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+    </p>
+    <p>
+    <%= f.submit "Update" %>
+    </p>
+<% end %>
+
+<%= link_to 'Show', todo_list_list_item_path(@todo_list, @list_item) %> |
+<%= link_to 'Back', todo_list_list_items_path(@todo_list) %>

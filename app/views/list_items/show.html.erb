@@ -1,0 +1,14 @@
+<h1>List Item on <%= @todo_list.title %></h1>
+
+<p>
+<b>Title:</b>
+<%=h @list_item.title %>
+</p>
+
+<p>
+<b>Description:</b>
+<%=h @list_item.description %>
+</p>
+
+<%= link_to 'Edit', edit_todo_list_list_item_path(@todo_list, @list_item) %> |
+<%= link_to 'Back', todo_list_list_items_path(@todo_list) %>
